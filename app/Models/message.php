@@ -13,4 +13,16 @@ class message extends Model
 
     public $hidden=["updated_at"];
 
+    public function messageable(){
+
+        return $this->morphTo();
+    }
+
+    public function user(){
+
+        return $this->belongsTo(User::class,"user_id");
+
+    }
+
+
 }

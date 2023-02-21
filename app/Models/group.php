@@ -10,6 +10,7 @@ class group extends Model
     use HasFactory;
 
     public $fillable=["name"];
+    public $hidden=["created_at","updated_at"];
 
 
     public function users(){
@@ -18,6 +19,10 @@ class group extends Model
     }
 
 
-    public $hidden=["created_at","updated_at"];
 
+
+    public function messages(){
+
+        return $this->morphMany(message::class,"messageable");
+    }
 }

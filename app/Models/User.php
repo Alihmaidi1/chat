@@ -19,6 +19,8 @@ class User extends Authenticatable
      */
     protected $fillable = ['name','email','password',"gender","image"];
 
+    protected $hidden = ['password','remember_token',"created_at","updated_at"];
+
     public function getGenderAttribute($value){
 
         return ($value==0)?"male":"female";
@@ -34,6 +36,22 @@ class User extends Authenticatable
     }
 
 
-    protected $hidden = ['password','remember_token',"created_at","updated_at"];
+    public function user1(){
+
+        return $this->hasMany(chat::class,"user_id1");
+    }
+
+
+    public function user2(){
+
+        return $this->hasMany(chat::class,"user_id2");
+    }
+
+    public function AllChat() {
+
+        return $this->user1->merge($this->user2);
+    }
+
+
 
 }
