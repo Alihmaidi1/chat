@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('user_groups', function (Blueprint $table) {
             $table->id();
-
+            $table->string("role_id");
+            $table->uuid("user_id");
+            $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade")->onUpdate("cascade");
+            $table->uuid("group_id");
+            $table->foreign("group_id")->references("id")->on("groups")->onDelete("cascade")->onUpdate("cascade");
+            $table->uuid("role_id");
+            $table->foreign("role_id")->references("id")->on("roles")->onDelete("cascade")->onUpdate("cascade");
             $table->timestamps();
         });
     }
