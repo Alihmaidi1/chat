@@ -11,6 +11,13 @@ class group extends Model
 
     public $fillable=["name"];
 
+
+    public function users(){
+
+        return $this->belongsToMany(User::class,user_group::class,"group_id","user_id");
+    }
+
+
     public $hidden=["created_at","updated_at"];
 
 }

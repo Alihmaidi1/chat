@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string("content");
             $table->uuid("messageable_id");
             $table->string("messageable_type");
+            $table->uuid("user_id");
+            $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade")->onUpdate("cascade");
+
             $table->timestamps();
         });
     }

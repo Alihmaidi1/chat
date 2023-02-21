@@ -27,6 +27,13 @@ class User extends Authenticatable
 
 
 
+    public function groups(){
+
+
+        return $this->belongsToMany(group::class,user_group::class,"user_id","group_id");
+    }
+
+
     protected $hidden = ['password','remember_token',"created_at","updated_at"];
 
 }
