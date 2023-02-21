@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class message extends Model
 {
     use HasFactory;
+
+    public $fillable=["content"];
+
+    public $hidden=["updated_at"];
+
 }
